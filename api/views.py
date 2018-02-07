@@ -1,5 +1,11 @@
-from django.http import HttpResponse
+from rest_framework import viewsets
+from api.models import Post
+from api.serializers import PostSerializer
 
 
-def index(request):
-    return HttpResponse('Yo Homie haha')
+class PostViewSet(viewsets.ModelViewSet):
+    """
+        API Endpoint to view Post table
+    """
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
