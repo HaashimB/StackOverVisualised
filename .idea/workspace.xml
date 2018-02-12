@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="565afec2-abfb-407d-92d7-fd6dca4c67d1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StackOverflowVisual/settings.py" afterPath="$PROJECT_DIR$/StackOverflowVisual/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/csvConverter.py" afterPath="$PROJECT_DIR$/api/csvConverter.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,7 +34,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.42052025">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/models.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="153">
@@ -44,11 +44,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="csvConverter.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="csvConverter.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/api/csvConverter.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+                <state relative-caret-position="34">
+                  <caret line="2" column="81" lean-forward="false" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
                   <folding />
                 </state>
               </provider>
@@ -229,7 +229,6 @@
         <option value="$PROJECT_DIR$/StackOverflowVisual/urls.py" />
         <option value="$PROJECT_DIR$/api/migrations/0006_auto_20180206_2038.py" />
         <option value="$PROJECT_DIR$/api/migrations/0009_auto_20180206_2043.py" />
-        <option value="$PROJECT_DIR$/api/csvConverter.py" />
         <option value="$PROJECT_DIR$/api/models.py" />
         <option value="$PROJECT_DIR$/api/serializers.py" />
         <option value="$PROJECT_DIR$/api/views.py" />
@@ -241,6 +240,7 @@
         <option value="$PROJECT_DIR$/FrontEnd/index.js" />
         <option value="$PROJECT_DIR$/FrontEnd/index.html" />
         <option value="$PROJECT_DIR$/StackOverflowVisual/settings.py" />
+        <option value="$PROJECT_DIR$/api/csvConverter.py" />
       </list>
     </option>
   </component>
@@ -864,22 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/csvConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FrontEnd/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -892,6 +876,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
           <caret line="88" column="25" lean-forward="false" selection-start-line="88" selection-start-column="25" selection-end-line="88" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/csvConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="81" lean-forward="false" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
           <folding />
         </state>
       </provider>
