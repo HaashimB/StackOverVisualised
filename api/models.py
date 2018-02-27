@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Posts(models.Model):
+class Post(models.Model):
     id = models.IntegerField(primary_key=True)
     score = models.IntegerField(null=True, default=1)
     viewcount = models.IntegerField(null=True, default=1)

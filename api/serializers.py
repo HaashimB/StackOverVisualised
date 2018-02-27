@@ -1,10 +1,10 @@
-from api.models import Posts, Tags
+from api.models import Post, Tags
 from rest_framework import serializers
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Posts
+        model = Post
         fields = ('id', 'score', 'viewcount', 'tags', 'creationdate')
 
 
