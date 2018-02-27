@@ -1,18 +1,14 @@
 from rest_framework import viewsets
 from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer
-from api.models import Post
-from api.serializers import PostSerializer
-import json
-import os
-
-BASE = os.path.dirname(os.path.abspath(__file__))
+from api.models import Posts, Tags
+from api.serializers import PostSerializer, TagSerializer
 
 
-class PostViewSet(viewsets.ModelViewSet):
+class PostsViewSet(viewsets.ModelViewSet):
     """
         API Endpoint to view Post table
     """
-    queryset = Post.objects.all()
+    queryset = Posts.objects.all()
     serializer_class = PostSerializer
 
 
@@ -22,8 +18,7 @@ class PostViewSet(viewsets.ModelViewSet):
 #     print(Tags)
 
 
-class TagsView(BrowsableAPIRenderer):
-    def get_default_renderer(self, view):
-        with open(os.path.join(BASE, "./DATA/tags.json"), 'r') as f:
-            tags = json.load(f)
-        return JSONRenderer()
+class TagsViewSet(BrowsableAPIRenderer):
+    """
+        API Endpoint to view Tags table
+    """
