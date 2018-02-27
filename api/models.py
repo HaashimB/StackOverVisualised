@@ -7,3 +7,8 @@ class Post(models.Model):
     viewcount = models.IntegerField(null=True, default=1)
     tags = models.CharField(null=True, max_length=100)
     creationdate = models.DateTimeField(null=True, blank=True)
+
+
+class Tags(models.Model):
+    count = models.IntegerField(null=True, default=1)
+    name = models.CharField(null=True, max_length=100)
