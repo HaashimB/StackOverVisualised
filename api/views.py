@@ -1,5 +1,4 @@
 from rest_framework import viewsets
-from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer
 from api.models import Post, Tags
 from api.serializers import PostSerializer, TagSerializer
 
