@@ -15,14 +15,13 @@ with open('./DATA/QueryResults.csv', 'r') as f:
 aList = []
 cList = []
 for line in s:
-    aList.append(line[0].split('>', 1)[0]
+    aList.append(line[0].split('>')[0]
                  .strip('<'))
     bList = list(set(aList))
-    print(line[0].split('<', 0)[0].strip('<>')[0])
+    cList.append(line[0].split('>'))
 
-print(aList.count('python'))
-print(bList.count('python'))
 print(cList)
+
 #cur.copy_to(f, 'api_post')
 
 #conn.commit()
