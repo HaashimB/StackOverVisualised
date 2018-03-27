@@ -8,19 +8,34 @@ cur = conn.cursor()
 #cur.execute('truncate api_tags')
 
 
-with open('./DATA/QueryResults.csv', 'r') as f:
-    reader = csv.reader(f)
-    s = list(reader)
+contents = {}
 
-aList = []
-cList = []
-for line in s:
-    aList.append(line[0].split('>')[0]
-                 .strip('<'))
-    bList = list(set(aList))
-    cList.append(line[0].split('>'))
+with open('./DATA/QueryResults.csv') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        splitRow = row['tags'].split('<')
+        key = "<" + splitRow[1]
+        print(key)
+        # Because the key isn't there yet we need to add it
+        if (key not in contents):
+            contents[key] = []
 
-print(cList)
+            itemCounter = 2
+            while itemCounter < len(splitRow):
+                # 0 is going to be space, 1 is going to be the key so we can ignore those
+                contents[key].append("<" + splitRow[itemCounter])
+                itemCounter += 1
+        else:
+            itemCounter = 2
+            while itemCounter < len(splitRow):
+                splitItem = "<" + splitRow[itemCounter]
+
+                # Additional check to see if the value is already part of the key list
+                if splitItem not in contents[key]:
+                    contents[key].append(splitItem)
+                itemCounter += 1
+
+print(contents)
 
 #cur.copy_to(f, 'api_post')
 
