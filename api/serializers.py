@@ -5,7 +5,7 @@ from rest_framework import serializers
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
-        fields = ('id', 'score', 'tags')
+        fields = ('key', 'values')
 
 
 class TagSerializer (serializers.HyperlinkedModelSerializer):

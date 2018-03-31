@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Post(models.Model):
-    score = models.IntegerField(null=True, default=1)
-    tags = models.CharField(null=True, max_length=100)
+    key = models.CharField(null=True, max_length=100)
+    values = models.CharField(null=True, max_length=100000)
 
 
 class Tags(models.Model):
