@@ -1,93 +1,53 @@
-import psycopg2
 import csv
+from pymongo import MongoClient
 
 
-conn = psycopg2.connect("host = 'localhost' port='5432' dbname='stack' user='root' password='root'")
-
-cur = conn.cursor()
-
-#cur.execute('truncate api_post')
-
-
-
-# d = []
-# c = []
-# with open('./DATA/QueryResults.csv') as csvfile:
-#     next(csvfile)
-#
-#     reader = csv.reader(csvfile)
-#     s = list(reader)
-#     for row in s:
-#         aList = (row[0].split())
-#         if aList == '<javascript>':
-#             print(aList)
-#             for ele in aList:
-#                 ele1 = ele.strip('<')
-#                 #print([ele1])
-#                 c.append(ele1.split("[']"))
-#
-#     for a in c:
-#         if a == "javascript":
-#             d.append([a])
-#
+def createChildNode(name):
+    childNode = {
+        "name": name,
+        "size": 1,
+        "children": []
+    }
+    return childNode
 
 
+def getExistingChildNode(name, parent):
+    # Find the node in parent with parameter "name": name
+    for obj in parent:
+        if obj["name"] == name:
+            obj["size"] += 1
+            return obj
 
 
-
-
-
-
-
-    # for row in s:
-    #
-    #     d.append(aList[0].strip('<'))
-    #     d = list(set(d))
-    #     for ele in aList:
-    #         aList = ele.strip('<').split(',')
-    #
-    #         c.append(aList)
-
-
-contents = {}
+contents = {
+    "name": "stackoverflow",
+    "children": []
+}
 
 with open('./DATA/QueryResults.csv') as csvfile:
     reader = csv.DictReader(csvfile)
+
     for row in reader:
-        splitRow = row['tags'].split('<')
-        key = "<" + splitRow[1]
-        print(key)
-        # Because the key isn't there yet we need to add it
-        if key not in contents:
-            contents[key] = []
-            key_inner = []
+        rowTags = row['tags'].replace('>', '').split('<')[1:]
+        parent = contents["children"]
 
-            itemCounter = 2
-            while itemCounter < len(splitRow):
-                # 0 is going to be space, 1 is going to be the key so we can ignore those
-                key_inner.append("<" + splitRow[itemCounter])
-                itemCounter += 1
+        for tag in rowTags:
+            childName = tag
+            childNameList = [obj["name"] for obj in parent]
 
-            contents[key].append(key_inner)
-        else:
-            itemCounter = 2
-            while itemCounter < len(splitRow):
-                splitItem = "<" + splitRow[itemCounter]
+            if childName not in childNameList:
+                childNode = createChildNode(childName)
+                parent.append(childNode)
+            else:
+                childNode = getExistingChildNode(childName, parent)
 
-                key_inner = []
+            parent = childNode["children"]
 
-                # Additional check to see if the value is already part of the key list
-                if splitItem not in contents[key]:
-                    key_inner.append(splitItem)
-                itemCounter += 1
-            contents[key].append(key_inner)
 
-print(contents)
 
-cur.executemany('INSERT INTO api_post (key, values) VALUES (%s, %s)', contents.items())
+client = MongoClient('localhost', 27017)
+db = client.stack
+collection = db.api_newtags
 
-conn.commit()
-
-conn.close()
-
+collection.insert_one(contents)
 

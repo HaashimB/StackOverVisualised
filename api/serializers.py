@@ -1,14 +1,8 @@
-from api.models import Post, Tags
-from rest_framework import serializers
+from api.models import NewTags
+from rest_framework_mongoengine import serializers
 
 
-class PostSerializer(serializers.HyperlinkedModelSerializer):
+class NewTagsSerializer(serializers.DocumentSerializer):
     class Meta:
-        model = Post
-        fields = ('key', 'values')
-
-
-class TagSerializer (serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Tags
-        fields = ('name', 'count')
+        model = NewTags
+        fields = '__all__'

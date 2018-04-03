@@ -1,19 +1,15 @@
-from rest_framework import viewsets
-from api.models import Post, Tags
-from api.serializers import PostSerializer, TagSerializer
+from api.models import NewTags
+from rest_framework_mongoengine import viewsets
+from api.serializers import NewTagsSerializer
 
 
-class PostsViewSet(viewsets.ModelViewSet):
-    """
-        API Endpoint to view Post table
-    """
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+class NewTagsViewSet(viewsets.ModelViewSet):
+    '''
+    Contains information about inputs/outputs of a single program
+    that may be used in Universe workflows.
+    '''
+    lookup_field = 'id'
+    serializer_class = NewTagsSerializer
 
-
-class TagsViewSet(viewsets.ModelViewSet):
-    """
-        API Endpoint to view Tags table
-    """
-    queryset = Tags.objects.all()
-    serializer_class = TagSerializer
+    def get_queryset(self):
+        return NewTags.objects.all()
