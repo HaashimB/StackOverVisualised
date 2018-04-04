@@ -1,6 +1,6 @@
 import csv
 from pymongo import MongoClient
-
+import json
 
 def createChildNode(name):
     childNode = {
@@ -43,11 +43,12 @@ with open('./DATA/QueryResults.csv') as csvfile:
 
             parent = childNode["children"]
 
+with open('./DATA/tags.json', 'w') as fp:
+    json.dump(contents, fp, indent=2)
 
-
-client = MongoClient('localhost', 27017)
-db = client.stack
-collection = db.api_newtags
-
-collection.insert_one(contents)
+# client = MongoClient('localhost', 27017)
+# db = client.stack
+# collection = db.api_newtags
+# collection.remove({})
+# collection.insert(contents)
 

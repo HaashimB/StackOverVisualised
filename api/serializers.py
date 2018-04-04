@@ -1,8 +1,8 @@
-from api.models import NewTags
-from rest_framework_mongoengine import serializers
-
-
-class NewTagsSerializer(serializers.DocumentSerializer):
-    class Meta:
-        model = NewTags
-        fields = '__all__'
+# from api.models import NewTags
+# from rest_framework import serializers
+#
+#
+# class NewTagsSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = NewTags
+#         fields = ('id', 'contents')
