@@ -103,14 +103,6 @@ DATABASES = {
     }
 }
 
-MONGODB_DATABASES = {
-    "default": {
-        "name": 'stack',
-        "host": 'localhost',
-        "password": '',
-        "username": 'hashdog',
-    },
-}
 
 
 # Password validation

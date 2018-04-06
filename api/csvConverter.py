@@ -1,6 +1,6 @@
 import csv
 import psycopg2
-import json
+from psycopg2.extensions import AsIs
 
 def createChildNode(name):
     childNode = {
@@ -43,10 +43,19 @@ with open('./DATA/QueryResults.csv') as csvfile:
 
             parent = childNode["children"]
 
-# with open('./DATA/tags.json', 'w') as fp:
-#     json.dump(contents, fp, indent=2)
+
+
+
+
+columns = contents.keys()
+values = [contents[column] for column in columns]
+
+insert_statement = 'insert into api_newtags(%s) values %s'
+
+
+
 
 conn = psycopg2.connect("host = 'localhost' port='5432' dbname='stack' user='root' password='root'")
 cur = conn.cursor()
-cur.execute("TRUNCATE api_tags")
-cur.execute("INSERT into api_tags()")
+cur.execute("TRUNCATE api_newtags")
+cur.execute(insert_statement, (AsIs(','.join(columns)), tuple(values)))
