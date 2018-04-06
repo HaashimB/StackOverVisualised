@@ -31,6 +31,12 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
 
 # Application definition
 
@@ -85,16 +91,25 @@ WSGI_APPLICATION = 'StackOverflowVisual.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-mongoengine.connect(
-    db="stack",
-    host="localhost:27017"
-)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'stack',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '',
     }
+}
+
+MONGODB_DATABASES = {
+    "default": {
+        "name": 'stack',
+        "host": 'localhost',
+        "password": '',
+        "username": 'hashdog',
+    },
 }
 
 

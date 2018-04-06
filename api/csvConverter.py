@@ -1,5 +1,5 @@
 import csv
-from pymongo import MongoClient
+import psycopg2
 import json
 
 def createChildNode(name):
@@ -43,12 +43,10 @@ with open('./DATA/QueryResults.csv') as csvfile:
 
             parent = childNode["children"]
 
-with open('./DATA/tags.json', 'w') as fp:
-    json.dump(contents, fp, indent=2)
+# with open('./DATA/tags.json', 'w') as fp:
+#     json.dump(contents, fp, indent=2)
 
-# client = MongoClient('localhost', 27017)
-# db = client.stack
-# collection = db.api_newtags
-# collection.remove({})
-# collection.insert(contents)
-
+conn = psycopg2.connect("host = 'localhost' port='5432' dbname='stack' user='root' password='root'")
+cur = conn.cursor()
+cur.execute("TRUNCATE api_tags")
+cur.execute("INSERT into api_tags()")
