@@ -48,5 +48,5 @@ with open('./DATA/QueryResults.csv') as csvfile:
 
 conn = psycopg2.connect("host = 'localhost' port='5432' dbname='stack' user='root' password='root'")
 cur = conn.cursor()
-cur.execute("TRUNCATE api_tags")
-cur.execute("INSERT into api_tags()")
+cur.execute("truncate api_nwq")
+cur.execute("INSERT")
