@@ -1,3 +1,5 @@
+#For a detailed explanation of this code please refer to page 43 of the Final Year Project Manual
+
 import csv
 import psycopg2
 import json
@@ -17,19 +19,21 @@ def createChildNode(name, score):
 
 def getExistingChildNode(name, parent, score):
     # Find the node in parent with parameter "name": name
-    for obj in parent:
-        if obj["name"] == name:
-            obj["size"] += score
-            return obj
+    for node in parent:
+        if node["name"] == name:
+            node["size"] += score
+            return node
 
 
 contents = {
     "name": "stackoverflow",
     "children": []
 }
+
+file = input("please enter dataset: ")
 print("running conversion algorithm")
 
-with open('./DATA/QueryResults11.csv') as csvfile:
+with open('./DATA/QueryResults' + file + '.csv') as csvfile:
     reader = csv.DictReader(csvfile)
 
     for row in reader:
@@ -39,7 +43,7 @@ with open('./DATA/QueryResults11.csv') as csvfile:
 
         for tag in rowTags:
             childName = tag
-            childNameList = [obj["name"] for obj in parent]
+            childNameList = [node["name"] for node in parent]
 
             if childName not in childNameList:
                 childNode = createChildNode(childName, rowScore)
@@ -49,7 +53,7 @@ with open('./DATA/QueryResults11.csv') as csvfile:
 
             parent = childNode["children"]
 
-print("inserting results into table")
+print(type(parent))
 insert_statement = "insert into api_newtags(id, content) values (%s, %s)"
 cur.execute("TRUNCATE api_newtags")
 cur.execute(insert_statement, (1, json.dumps(contents)))
