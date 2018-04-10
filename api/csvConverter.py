@@ -4,6 +4,7 @@ import csv
 import psycopg2
 import json
 
+print('opening connection to psql database')
 conn = psycopg2.connect("host = 'localhost' port='5432' dbname='stack' user='root' password='root'")
 cur = conn.cursor()
 
@@ -53,9 +54,13 @@ with open('./DATA/QueryResults' + str(file) + '.csv') as csvfile:
 
             parent = childNode["children"]
 
-print(type(parent))
+print("inserting data into PSQL database")
+
 insert_statement = "insert into api_newtags(id, content) values (%s, %s)"
+
 cur.execute("TRUNCATE api_newtags")
 cur.execute(insert_statement, (1, json.dumps(contents)))
 conn.commit()
 conn.close()
+
+print('connection closed')
