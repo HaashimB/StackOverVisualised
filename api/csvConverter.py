@@ -33,7 +33,7 @@ contents = {
 file = input("please enter dataset: ")
 print("running conversion algorithm")
 
-with open('./DATA/QueryResults' + file + '.csv') as csvfile:
+with open('./DATA/QueryResults' + str(file) + '.csv') as csvfile:
     reader = csv.DictReader(csvfile)
 
     for row in reader:
