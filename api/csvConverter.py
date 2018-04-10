@@ -27,6 +27,7 @@ contents = {
     "name": "stackoverflow",
     "children": []
 }
+print("running conversion algorithm")
 
 with open('./DATA/QueryResults11.csv') as csvfile:
     reader = csv.DictReader(csvfile)
@@ -48,6 +49,7 @@ with open('./DATA/QueryResults11.csv') as csvfile:
 
             parent = childNode["children"]
 
+print("inserting results into table")
 insert_statement = "insert into api_newtags(id, content) values (%s, %s)"
 cur.execute("TRUNCATE api_newtags")
 cur.execute(insert_statement, (1, json.dumps(contents)))
