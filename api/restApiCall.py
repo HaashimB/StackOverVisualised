@@ -1,3 +1,7 @@
+#This is no longer used in the project
+#It was initially used to retrieve data from the RestAPI
+
+
 import requests
 import psycopg2
 
@@ -14,8 +18,7 @@ cur.execute('truncate api_tags')
 for each in data['items']:
     countField = each['count']
     nameField = each['name']
-    cur.execute('INSERT INTO api_tags(count,name) VALUES (%s, %s)',
-                (countField, nameField))
+    cur.execute('INSERT INTO api_tags(count,name) VALUES (%s, %s)', (countField, nameField))
 
 conn.commit()
 

@@ -19,7 +19,6 @@ def createChildNode(name, score):
 
 
 def getExistingChildNode(name, parent, score):
-    # Find the node in parent with parameter "name": name
     for node in parent:
         if node["name"] == name:
             node["size"] += score
