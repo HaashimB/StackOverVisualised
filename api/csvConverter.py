@@ -33,7 +33,7 @@ contents = {
 file = input("please enter dataset: ")
 print("running conversion algorithm")
 
-with open('./DATA/QueryResults' + str(file) + '.csv') as csvfile:
+with open('./DATA/' + str(file) + '.csv') as csvfile:
     reader = csv.DictReader(csvfile)
 
     for row in reader:
@@ -55,10 +55,11 @@ with open('./DATA/QueryResults' + str(file) + '.csv') as csvfile:
 
 print("inserting data into PSQL database")
 
-insert_statement = "insert into api_newtags(id, content) values (%s, %s)"
 
-cur.execute("TRUNCATE api_newtags")
-cur.execute(insert_statement, (1, json.dumps(contents)))
+
+insert_statement = "insert into api_" + file + "json (id, content) values (%s, %s)"
+cur.execute("TRUNCATE api_" + file + "json")
+cur.execute(insert_statement, (0, json.dumps(contents)))
 conn.commit()
 conn.close()
 
