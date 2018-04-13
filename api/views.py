@@ -1,6 +1,6 @@
-from api.models import FebJson, MarJson, JanJson
+from api.models import FebJson, MarJson, JanJson, JanCsv
 from rest_framework import viewsets
-from api.serializers import FebJsonSerializer, MarJsonSerializer, JanJsonSerializer
+from api.serializers import FebJsonSerializer, MarJsonSerializer, JanJsonSerializer, JanCsvSerializer
 
 
 class FebJsonViewSet(viewsets.ReadOnlyModelViewSet):
@@ -17,3 +17,7 @@ class JanJsonViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = JanJsonSerializer
     queryset = JanJson.objects.all()
 
+
+class JanCsvViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = JanCsvSerializer
+    queryset = JanCsv.objects.all()

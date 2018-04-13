@@ -15,3 +15,9 @@ class MarJson(models.Model):
 class JanJson(models.Model):
     id = models.AutoField(primary_key=True)
     content = JSONField()
+
+
+class JanCsv(models.Model):
+    id = models.AutoField(primary_key=True)
+    tags = models.CharField(max_length=10000)
+    score = models.IntegerField()
